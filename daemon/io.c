@@ -25,7 +25,11 @@
 #include <net/if.h>
 #include <sys/ioctl.h>
 #ifndef __APPLE__
+#if defined(__GLIBC__)
 #include <linux/if_tun.h>
+#else
+#include <net/ethernet.h>
+#endif
 #else
 #include <sys/sys_domain.h>
 #include <sys/kern_control.h>
